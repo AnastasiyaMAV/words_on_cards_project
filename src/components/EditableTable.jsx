@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd';
 
-
 const originData = require('./JSON/originData.json');
 
 const EditableCell = ({
@@ -87,22 +86,26 @@ function EditableTable() {
       dataIndex: 'english',
       width: '25%',
       editable: true,
+      className: 'EditableTable',
     },
     {
       title: 'transcription',
       dataIndex: 'transcription',
       width: '25%',
       editable: true,
+      className: 'EditableTable',
     },
     {
       title: 'russian',
       dataIndex: 'russian',
       width: '20%',
       editable: true,
+      className: 'EditableTable',
     },
     {
       title: 'operation',
       dataIndex: 'operation',
+      className: 'EditableTable',
       render: (_, record) => {
         const editable = isEditing(record);
         return editable ? (

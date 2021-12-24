@@ -19,4 +19,27 @@
   src: local("☺"), url("../assets/fonts/Rubik-Italic.woff") format("woff"), url("../assets/fonts/Rubik-Italic.ttf") format("truetype"), url("../assets/fonts/Rubik-Italic.svg") format("svg");
   font-weight: normal;
   font-style: normal;
-}/*# sourceMappingURL=Font.css.map */
+}
+.header {
+  text-align: center;
+  color: #f0f8ff;
+  font-size: 25px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 25px;
+}
+
+.EditableTable {
+  text-align: center;
+  font-size: 45px;
+}
+
+.cardRussianhWordInitial {
+  color: #ffffff;
+}
+
+.cardRussianhWordReverse {
+  color: #000000;
+}/*# sourceMappingURL=MainStyle.css.map */

@@ -1,4 +1,4 @@
-import { Card, Col, Button } from 'antd';
+import { Card, Button } from 'antd';
 import React, { useState } from 'react';
 
 export default function CardWord(props) {
