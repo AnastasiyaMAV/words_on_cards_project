@@ -19,24 +19,15 @@ function App() {
 
         <Content>
           <List
-            grid={{ 
-              gutter: 0, 
-              xs: 1,
-              sm: 2,
-              md: 2,
-              lg: 4,
-              xl: 4,
-              xxl: 4
-            }}
             pagination={{
               onChange: page => {
                 console.log(page);
               },
-              pageSize: 8,
+              pageSize: 1,
             }}
             dataSource={originData}
             renderItem={item => (
-              <List.Item>
+              <List.Item className='listItemStyle'>
                 {
                   <CardWord key={item.id} english={item.english} 
                     transcription={item.transcription} 

@@ -8,3 +8,7 @@
   font-family:'Rubik-Light', 'Arial Narrow', Arial, sans-serif;
 }
 
+.listItemStyle {
+  display: flex; 
+  justify-content: center;
+}

@@ -10,8 +10,7 @@ export default function CardWord(props) {
     };
     
     return(
-
-        <Card hoverable className='cardStyle'>
+        <Card size='small' hoverable className='cardTextStyle'>
             <h1 className='cardEnglishWord'>{props.english}</h1>
             <h2 className='cardTranscription'>{props.transcription}</h2>
             <hr/>
