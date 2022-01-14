@@ -6,8 +6,76 @@
     color: $colorCardRussianhWordReverse;
 }
 
-.cardTextStyle {
+.contentCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
     width: 300px;
     text-align: center;
+    background-color: $colorCardRussianhWordInitial;
 }
-// style={{ width: 300, textAlign: 'center'}}
+
+// ----------Анимация----------
+// ----------Автор: github.com/scriptype ----------
+$width: 34vmin;
+
+* {
+  box-sizing: border-box;
+}
+
+.circles {
+  width: $width;
+  height: $width;
+  position: relative;
+  perspective: 50000px;
+  color: $colorCardCircles;
+  
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 18.4%;
+    height: 18.4%;
+    border-radius: 100%;
+    background: currentColor;
+  }
+  
+  div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-left:
+      $width / 25 solid;
+    border-top:
+      $width / 25 solid transparent;
+    border-radius: 100%;
+    
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) {
+        animation: anim-#{$i} 1s linear infinite;
+      }
+    }
+  }
+}
+
+@for $i from 1 through 3 {
+  @keyframes anim-#{$i} {
+    from {
+      transform:
+        rotateZ(360deg / 3 * $i)
+        rotateX(66deg)
+        rotateZ(0deg);
+    }
+    to {
+      transform:
+        rotateZ(360deg / 3 * $i)
+        rotateX(66deg)
+        rotateZ(360deg);
+    }
+  }
+}

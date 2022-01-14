@@ -1,5 +1,10 @@
 .header {
+  display: flex;
+  justify-content: space-around;
   text-align: center;
-  color: #f0f8ff;
   font-size: 25px;
+}
+
+.logoImg {
+  max-width: 50px;
 }/*# sourceMappingURL=Header.css.map */

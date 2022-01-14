@@ -1,4 +1,12 @@
 .footer {
-    text-align: center;
+    text-align: right;
     font-size: 25px;
+    background-color: $colorHeaderFooterBg;
+    padding-right: 20px;
+    position: sticky; 
+    bottom: 0;
+}
+
+.copyrightImg {
+    max-width: 20px;
 }
