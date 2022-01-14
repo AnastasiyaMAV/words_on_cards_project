@@ -1,22 +1,22 @@
 @charset "UTF-8";
 @font-face {
   font-family: "Rubik-Light";
-  src: url("/public/assets/fonts/Rubik-Light.eot");
-  src: local("☺"), url("/public/assets/fonts/Rubik-Light.woff") format("woff"), url("/public/assets/fonts/Rubik-Light.ttf") format("truetype"), url("/public/assets/fonts/Rubik-Light.svg") format("svg");
+  src: url("../assets/fonts/Rubik-Light.eot");
+  src: local("☺"), url("../assets/fonts/Rubik-Light.woff") format("woff"), url("../assets/fonts/Rubik-Light.ttf") format("truetype"), url("../assets/fonts/Rubik-Light.svg") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Rubik-Bold";
-  src: url("/public/assets/fonts/Rubik-Bold.eot");
-  src: local("☺"), url("/public/assets/fonts/Rubik-Bold.woff") format("woff"), url("/public/assets/fonts/Rubik-Bold.ttf") format("truetype"), url("/public/assets/fonts/Rubik-Bold.svg") format("svg");
+  src: url("../assets/fonts/Rubik-Bold.eot");
+  src: local("☺"), url("../assets/fonts/Rubik-Bold.woff") format("woff"), url("../assets/fonts/Rubik-Bold.ttf") format("truetype"), url("../assets/fonts/Rubik-Bold.svg") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Rubik-Italic";
-  src: url("/public/assets/fonts/Rubik-Light.eot");
-  src: local("☺"), url("/public/assets/fonts/Rubik-Italic.woff") format("woff"), url("/public/assets/fonts/Rubik-Italic.ttf") format("truetype"), url("/public/assets/fonts/Rubik-Italic.svg") format("svg");
+  src: url("../assets/fonts/Rubik-Light.eot");
+  src: local("☺"), url("../assets/fonts/Rubik-Italic.woff") format("woff"), url("../assets/fonts/Rubik-Italic.ttf") format("truetype"), url("../assets/fonts/Rubik-Italic.svg") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -168,5 +168,45 @@
   }
   to {
     transform: rotateZ(360deg) rotateX(66deg) rotateZ(360deg);
+  }
+}
+.wrapper {
+  height: 78vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid red;
+}
+
+.typing-demo {
+  width: 22ch;
+  -webkit-animation: typing 2s steps(22), blink 0.5s step-end infinite alternate;
+          animation: typing 2s steps(22), blink 0.5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+  font-size: 2em;
+}
+
+@-webkit-keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+@keyframes blink {
+  50% {
+    border-color: transparent;
   }
 }/*# sourceMappingURL=MainStyle.css.map */
