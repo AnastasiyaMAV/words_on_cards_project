@@ -25,6 +25,7 @@
   justify-content: space-around;
   align-items: center;
   background-color: #4c8bb1;
+  color: #4c8bb1;
   text-align: center;
   font-size: 25px;
   height: 80px;
@@ -36,6 +37,10 @@
 
 .logoImg {
   max-width: 50px;
+}
+
+.notActivLink {
+  color: #000000;
 }
 
 .footer {
@@ -171,11 +176,10 @@
   }
 }
 .wrapper {
-  height: 78vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid red;
 }
 
 .typing-demo {

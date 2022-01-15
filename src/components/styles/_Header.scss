@@ -2,7 +2,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: $colorHeaderFooterBg; 
+    background-color: $colorHeaderFooterBg;
+    color: $colorHeaderFooterBg; 
     text-align: center;
     font-size: 25px;
     height: 80px;
@@ -13,4 +14,8 @@
 
 .logoImg {
     max-width: 50px;
+}
+
+.notActivLink {
+    color: $colorHeaderText;
 }
