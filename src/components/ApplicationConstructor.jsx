@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { List } from 'antd';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from './Header';
@@ -9,6 +10,13 @@ import NoMatchesFound from './NoMatchesFound';
 const originData = require('./JSON/originData.json');
 
 function ApplicationConstructor() {
+  const [count, setCount] = useState(0);
+  
+  const countWord = () => {
+    setCount(count + 1);
+    console.log(count);
+  }
+
   return (
     <div className="container">
       <Router>
@@ -22,7 +30,7 @@ function ApplicationConstructor() {
                 pagination={{
                   onChange: 
                   page => {
-                    console.log(page);
+                    // console.log(page);
                   },
                   pageSize: 1,
                 }}
@@ -32,7 +40,7 @@ function ApplicationConstructor() {
                     {                      
                       <CardWord key={item.id} english={item.english} 
                         transcription={item.transcription} 
-                        russian={item.russian}/>
+                        russian={item.russian} countWord = {countWord}/>
                     }
                   </List.Item>
                 )}

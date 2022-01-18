@@ -130,6 +130,7 @@ function EditableTable() {
       },
     },
   ];
+  
   const mergedColumns = columns.map((col) => {
     if (!col.editable) {
       return col;
