@@ -5,20 +5,28 @@ import React, { useState, useEffect, useRef } from 'react';
 export default function CardWord(props) {
 
     const [pressed, setPressed] = useState(false);
+    const [printCount, setPrintCount] = useState(0);
     const ref = useRef(null)
 
     const handleClickButton = (event) => {
         if (event.type === "mousedown") {
-            setPressed(!pressed);
+            setPressed(!pressed);            
         } else {
             setTimeout(() => setPressed(!pressed), 1000);
-            props.countWord();
+            setPrintCount(props.countWord(props.idWord));
         }
     };
 
     useEffect(() => {
         ref.current.focus();
     });
+
+    useEffect(() => {
+        if(printCount){
+            localStorage.setItem('printCount', printCount);
+        }
+    },[printCount]);
+
 
     return(
         <Content className='contentCard'>
@@ -28,11 +36,19 @@ export default function CardWord(props) {
                 <div></div>
                 <span></span>
             </div>
+
             <Card hoverable className='card'>
+                <p>Выучено слов: 
+                {
+                    JSON.parse(localStorage.getItem('printCount'))
+                }
+                </p>
                 <h1 className='cardEnglishWord'>{props.english}</h1>
                 <h2 className='cardTranscription'>{props.transcription}</h2>
+                                
                 <hr/>
-                <Button {...props} className='cardButton' ref={ref} onMouseDown={handleClickButton} onMouseUp={handleClickButton} >
+                <Button {...props} className='cardButton' ref={ref} 
+                    onMouseDown={handleClickButton} onMouseUp={handleClickButton}>
                     {
                         pressed ? "Translation" : "Check"
                     }

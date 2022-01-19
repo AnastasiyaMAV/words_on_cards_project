@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { List } from 'antd';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from './Header';
@@ -10,11 +10,13 @@ import NoMatchesFound from './NoMatchesFound';
 const originData = require('./JSON/originData.json');
 
 function ApplicationConstructor() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(new Set());
   
-  const countWord = () => {
-    setCount(count + 1);
-    console.log(count);
+  const countWord = (id) => {
+    if(!count.has()) {
+      setCount(count.add(id));
+    }
+    return count.size;
   }
 
   return (
@@ -38,9 +40,9 @@ function ApplicationConstructor() {
                 renderItem={item => (
                   <List.Item className='listItemStyle'>
                     {                      
-                      <CardWord key={item.id} english={item.english} 
+                      <CardWord key={item.id} idWord={item.id}english={item.english} 
                         transcription={item.transcription} 
-                        russian={item.russian} countWord = {countWord}/>
+                        russian={item.russian} countWord={countWord} />
                     }
                   </List.Item>
                 )}
