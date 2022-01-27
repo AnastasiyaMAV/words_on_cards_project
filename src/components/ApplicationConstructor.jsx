@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { List } from 'antd';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from './Header';
@@ -40,9 +40,9 @@ function ApplicationConstructor() {
                 renderItem={item => (
                   <List.Item className='listItemStyle'>
                     {                      
-                      <CardWord key={item.id} idWord={item.id}english={item.english} 
+                      <CardWord key={item.key} idword={item.key} english={item.english} 
                         transcription={item.transcription} 
-                        russian={item.russian} countWord={countWord} />
+                        russian={item.russian} count={countWord} />
                     }
                   </List.Item>
                 )}

@@ -1,81 +1,81 @@
-    [{
-        "id":"1",
-        "english":"butterfly",
-        "transcription":"[ ˈbʌtəflaɪ ]",
-        "russian":"бабочка"
-    },{
-        "id":"2",
-        "english":"hedgehog",
-        "transcription":"[ ˈhedʒhɔːɡ ]",
-        "russian":"ёжик"
-    },{
-        "id":"3",
-        "english":"apple",
-        "transcription":"[ ˈæpl ]",
-        "russian":"яблоко"
-    },{
-        "id":"4",
-        "english":"pear",
-        "transcription":"[ peə ]",
-        "russian":"груша"
-    },{
-        "id":"5",
-        "english":"carrot",
-        "transcription":"[ ˈkærət ]",
-        "russian":"морковка"
-    },{
-        "id":"6",
-        "english":"plum",
-        "transcription":"[ plʌm ]",
-        "russian":"слива"
-    },{
-        "id":"7",
-        "english":"unicorn",
-        "transcription":"[ ˈjuːnɪkɔːrn ]",
-        "russian":"единорог"
-    },{
-        "id":"8",
-        "english":"cat",
-        "transcription":"[ kæt ]",
-        "russian":"кот"
-    },{
-        "id": "9",
-        "english":"car",
-        "transcription":"[ kɑ: ]",
-        "russian":"автомобиль"
-    },{
-        "id": "10",
-        "english":"street",
-        "transcription":"[ stri:t ]",
-        "russian":"улица"
-    },{
-        "id": "11",
-        "english":"people",
-        "transcription":"[ pi:pl ]",
-        "russian":"люди"
-    },{
-        "id": "12",
-        "english":"head",
-        "transcription":"[ hed ]",
-        "russian":"голова"
-    },{
-        "id": "13",
-        "english":"eye",
-        "transcription":"[ ai ]",
-        "russian":"глаз"
-    },{
-        "id": "14",
-        "english":"arm",
-        "transcription":"[ ɑ:m ]",
-        "russian":"рука"
-    },{
-        "id": "15",
-        "english":"hair",
-        "transcription":"[ hɛə ]",
-        "russian":"волосы"
-    },{
-        "id": "16",
-        "english":"face",
-        "transcription":"[ feis ]",
-        "russian":"лицо"
-    }]
+[{
+    "key":"1",
+    "english":"butterfly",
+    "transcription":"[ ˈbʌtəflaɪ ]",
+    "russian":"бабочка"
+},{
+    "key":"2",
+    "english":"hedgehog",
+    "transcription":"[ ˈhedʒhɔːɡ ]",
+    "russian":"ёжик"
+},{
+    "key":"3",
+    "english":"apple",
+    "transcription":"[ ˈæpl ]",
+    "russian":"яблоко"
+},{
+    "key":"4",
+    "english":"pear",
+    "transcription":"[ peə ]",
+    "russian":"груша"
+},{
+    "key":"5",
+    "english":"carrot",
+    "transcription":"[ ˈkærət ]",
+    "russian":"морковка"
+},{
+    "key":"6",
+    "english":"plum",
+    "transcription":"[ plʌm ]",
+    "russian":"слива"
+},{
+    "key":"7",
+    "english":"unicorn",
+    "transcription":"[ ˈjuːnɪkɔːrn ]",
+    "russian":"единорог"
+},{
+    "key":"8",
+    "english":"cat",
+    "transcription":"[ kæt ]",
+    "russian":"кот"
+},{
+    "key": "9",
+    "english":"car",
+    "transcription":"[ kɑ: ]",
+    "russian":"автомобиль"
+},{
+    "key": "10",
+    "english":"street",
+    "transcription":"[ stri:t ]",
+    "russian":"улица"
+},{
+    "key": "11",
+    "english":"people",
+    "transcription":"[ pi:pl ]",
+    "russian":"люди"
+},{
+    "key": "12",
+    "english":"head",
+    "transcription":"[ hed ]",
+    "russian":"голова"
+},{
+    "key": "13",
+    "english":"eye",
+    "transcription":"[ ai ]",
+    "russian":"глаз"
+},{
+    "key": "14",
+    "english":"arm",
+    "transcription":"[ ɑ:m ]",
+    "russian":"рука (от кисти до плеча)"
+},{
+    "key": "15",
+    "english":"hair",
+    "transcription":"[ hɛə ]",
+    "russian":"волосы"
+},{
+    "key": "16",
+    "english":"face",
+    "transcription":"[ feis ]",
+    "russian":"лицо"
+}]

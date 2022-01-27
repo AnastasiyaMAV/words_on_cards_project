@@ -1,19 +1,20 @@
 import { Card, Button } from 'antd';
 import { Content } from 'antd/lib/layout/layout';
 import React, { useState, useEffect, useRef } from 'react';
+import throttle from 'lodash/throttle';
 
 export default function CardWord(props) {
 
     const [pressed, setPressed] = useState(false);
     const [printCount, setPrintCount] = useState(0);
-    const ref = useRef(null)
+    const ref = useRef(null);
 
     const handleClickButton = (event) => {
         if (event.type === "mousedown") {
             setPressed(!pressed);            
         } else {
-            setTimeout(() => setPressed(!pressed), 1000);
-            setPrintCount(props.countWord(props.idWord));
+            setTimeout(throttle(() => setPressed(!pressed), 1000), 1000);
+            setPrintCount(props.count(props.idword));
         }
     };
 
@@ -30,7 +31,7 @@ export default function CardWord(props) {
 
     return(
         <Content className='contentCard'>
-            <div class="circles" title="Urheberschaft: https://github.com/scriptype">
+            <div className="circles" title="Urheberschaft: https://github.com/scriptype">
                 <div></div>
                 <div></div>
                 <div></div>

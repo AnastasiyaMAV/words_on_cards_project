@@ -119,7 +119,7 @@ function EditableTable() {
               Save
             </Typography.Link>
             <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
-              <Typography.Link>Cancel</Typography.Link> {/* <a>Cancel</a> */}              
+              <a>Cancel</a>
             </Popconfirm>
           </span>
         ) : (

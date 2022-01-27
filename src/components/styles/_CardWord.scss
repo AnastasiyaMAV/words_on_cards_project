@@ -50,9 +50,9 @@ $width: 34vmin;
     width: 100%;
     height: 100%;
     border-left:
-      $width / 25 solid;
+      calc($width / 25) solid;
     border-top:
-      $width / 25 solid transparent;
+      calc($width / 25) solid transparent;
     border-radius: 100%;
     
     @for $i from 1 through 3 {
@@ -67,13 +67,13 @@ $width: 34vmin;
   @keyframes anim-#{$i} {
     from {
       transform:
-        rotateZ(360deg / 3 * $i)
+        rotateZ(calc(360deg / 3) * $i)
         rotateX(66deg)
         rotateZ(0deg);
     }
     to {
       transform:
-        rotateZ(360deg / 3 * $i)
+      rotateZ(calc(360deg / 3) * $i)
         rotateX(66deg)
         rotateZ(360deg);
     }

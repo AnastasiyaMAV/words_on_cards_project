@@ -5,9 +5,7 @@ import ApplicationConstructor from './components/ApplicationConstructor';
 
 function App() {
   return (
-    <>
-      <ApplicationConstructor />
-    </>
+    <ApplicationConstructor />
   );
 }
 
