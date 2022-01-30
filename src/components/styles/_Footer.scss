@@ -1,12 +1,33 @@
 .footer {
-    text-align: right;
-    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
     background-color: $colorHeaderFooterBg;
-    padding-right: 20px;
     position: sticky; 
     bottom: 0;
 }
 
+.btnTheme{
+    display: flex;
+    padding-top: 3px;
+    padding-left: 5px;
+}
+
+.inscription {
+    font-size: 25px;
+    padding-right: 20px;
+}
+
 .copyrightImg {
     max-width: 20px;
+}
+
+// Правила для темы
+
+html[data-theme='dark']{
+    --color-background: #dddddd;
+}
+
+html[data-theme='light']{
+    --color-background: #ffffff;
 }

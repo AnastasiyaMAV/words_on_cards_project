@@ -158,7 +158,7 @@ function EditableTable() {
         bordered
         dataSource={data}
         columns={mergedColumns}
-        rowClassName="editable-row"
+        rowClassName="editable-row "
         pagination={{
           onChange: cancel,
         }}
