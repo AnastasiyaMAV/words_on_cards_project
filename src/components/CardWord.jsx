@@ -17,6 +17,8 @@ export default function CardWord(props) {
             setPrintCount(props.count(props.idword));
         }
     };
+    
+    const {count, ...data} = props; //всё кроме count
 
     useEffect(() => {
         ref.current.focus();
@@ -48,7 +50,7 @@ export default function CardWord(props) {
                 <h2 className='cardTranscription'>{props.transcription}</h2>
                                 
                 <hr/>
-                <Button {...props} className='cardButton' ref={ref} 
+                <Button {...data} className='cardButton' ref={ref} 
                     onMouseDown={handleClickButton} onMouseUp={handleClickButton}>
                     {
                         pressed ? "Translation" : "Check"
