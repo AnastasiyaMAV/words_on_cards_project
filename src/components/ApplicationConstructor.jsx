@@ -10,13 +10,24 @@ import NoMatchesFound from './NoMatchesFound';
 const originData = require('./JSON/originData.json');
 
 function ApplicationConstructor() {
-  const [count, setCount] = useState(new Set());
+  // const [count, setCount] = useState(new Set());
+  const [selected, setSelected] = useState([]);
+  const [count, setCount] = useState(0);
   
   const countWord = (id) => {
-    if(!count.has()) {
-      setCount(count.add(id));
-    }
-    return count.size;
+  //   if(!count.has()) {
+  //     console.log('кладу');
+  //     setCount(count.add(id));
+  //   } else {
+  //     console.log('пытаюсь чистить');
+  //     setCount(count.clear());
+  //   }
+  //   return count.size;
+    setCount(count+1);
+    const newSet = new Set(selected);
+    newSet.add(id);
+    setSelected(Array.from(newSet));
+    return newSet.size;
   }
 
   return (

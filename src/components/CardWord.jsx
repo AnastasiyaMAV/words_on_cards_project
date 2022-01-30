@@ -8,8 +8,9 @@ export default function CardWord(props) {
     const [pressed, setPressed] = useState(false);
     const [printCount, setPrintCount] = useState(0);
     const ref = useRef(null);
+    const {count, ...data} = props; //всё кроме count
 
-    const handleClickButton = (event) => {
+    const handleClickButtonCheck = (event) => {
         if (event.type === "mousedown") {
             setPressed(!pressed);            
         } else {
@@ -18,7 +19,14 @@ export default function CardWord(props) {
         }
     };
     
-    const {count, ...data} = props; //всё кроме count
+    const handleClickButtonGame = () => {
+        if(localStorage.getItem('printCount') != null){
+            localStorage.removeItem('printCount');
+            setPrintCount('0');
+        }
+        // localStorage.removeItem('printCount');
+    };
+    
 
     useEffect(() => {
         ref.current.focus();
@@ -41,17 +49,24 @@ export default function CardWord(props) {
             </div>
 
             <Card hoverable className='card'>
-                <p>Выучено слов: 
-                {
-                    JSON.parse(localStorage.getItem('printCount'))
-                }
-                </p>
+                <div className='game'>
+                    <p className='gameCount'>Выучено слов: 
+                    {
+                        JSON.parse(localStorage.getItem('printCount'))
+                        ? JSON.parse(localStorage.getItem('printCount'))
+                        : '0'
+                    }
+                    </p>
+                    <Button onClick={handleClickButtonGame}>start over</Button>
+                </div>
+
+                <hr/>
                 <h1 className='cardEnglishWord'>{props.english}</h1>
                 <h2 className='cardTranscription'>{props.transcription}</h2>
                                 
                 <hr/>
                 <Button {...data} className='cardButton' ref={ref} 
-                    onMouseDown={handleClickButton} onMouseUp={handleClickButton}>
+                    onMouseDown={handleClickButtonCheck} onMouseUp={handleClickButtonCheck}>
                     {
                         pressed ? "Translation" : "Check"
                     }

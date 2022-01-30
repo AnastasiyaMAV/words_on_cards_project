@@ -18,6 +18,15 @@
     background-color: $colorCardRussianhWordInitial;
 }
 
+.game {
+  display: flex;
+  justify-content: space-around;
+}
+
+.gameCount {
+  padding-top: 3px;
+}
+
 // ----------Анимация----------
 // ----------Автор: github.com/scriptype ----------
 $width: 34vmin;
@@ -67,13 +76,13 @@ $width: 34vmin;
   @keyframes anim-#{$i} {
     from {
       transform:
-        rotateZ(calc(360deg / 3) * $i)
+        rotateZ(calc(360deg/3)*$i)
         rotateX(66deg)
         rotateZ(0deg);
     }
     to {
       transform:
-      rotateZ(calc(360deg / 3) * $i)
+        rotateZ(calc(360deg/3)*$i)
         rotateX(66deg)
         rotateZ(360deg);
     }

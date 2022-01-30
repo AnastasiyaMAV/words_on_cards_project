@@ -44,23 +44,44 @@
 }
 
 .footer {
-  text-align: right;
-  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
   background-color: #4c8bb1;
-  padding-right: 20px;
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
+}
+
+.btnTheme {
+  display: flex;
+  padding-top: 3px;
+  padding-left: 5px;
+}
+
+.inscription {
+  font-size: 25px;
+  padding-right: 20px;
 }
 
 .copyrightImg {
   max-width: 20px;
 }
 
+html[data-theme=dark] {
+  --color-background: #dddddd;
+}
+
+html[data-theme=light] {
+  --color-background: #ffffff;
+}
+
 .EditableTable {
   text-align: left;
   font-size: 24px;
   margin-top: 80px;
+  background-color: var(--color-background);
+  transition: background-color 200ms linear;
 }
 
 .cardRussianhWordInitial {
@@ -109,8 +130,8 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  border-left: 1.36vmin solid;
-  border-top: 1.36vmin solid transparent;
+  border-left: calc($width / 25) solid;
+  border-top: calc($width / 25) solid transparent;
   border-radius: 100%;
 }
 .circles div:nth-child(1) {
@@ -128,51 +149,51 @@
 
 @-webkit-keyframes anim-1 {
   from {
-    transform: rotateZ(120deg) rotateX(66deg) rotateZ(0deg);
+    transform: rotateX(66deg) rotateZ(0deg);
   }
   to {
-    transform: rotateZ(120deg) rotateX(66deg) rotateZ(360deg);
+    transform: rotateX(66deg) rotateZ(360deg);
   }
 }
 
 @keyframes anim-1 {
   from {
-    transform: rotateZ(120deg) rotateX(66deg) rotateZ(0deg);
+    transform: rotateX(66deg) rotateZ(0deg);
   }
   to {
-    transform: rotateZ(120deg) rotateX(66deg) rotateZ(360deg);
+    transform: rotateX(66deg) rotateZ(360deg);
   }
 }
 @-webkit-keyframes anim-2 {
   from {
-    transform: rotateZ(240deg) rotateX(66deg) rotateZ(0deg);
+    transform: rotateX(66deg) rotateZ(0deg);
   }
   to {
-    transform: rotateZ(240deg) rotateX(66deg) rotateZ(360deg);
+    transform: rotateX(66deg) rotateZ(360deg);
   }
 }
 @keyframes anim-2 {
   from {
-    transform: rotateZ(240deg) rotateX(66deg) rotateZ(0deg);
+    transform: rotateX(66deg) rotateZ(0deg);
   }
   to {
-    transform: rotateZ(240deg) rotateX(66deg) rotateZ(360deg);
+    transform: rotateX(66deg) rotateZ(360deg);
   }
 }
 @-webkit-keyframes anim-3 {
   from {
-    transform: rotateZ(360deg) rotateX(66deg) rotateZ(0deg);
+    transform: rotateX(66deg) rotateZ(0deg);
   }
   to {
-    transform: rotateZ(360deg) rotateX(66deg) rotateZ(360deg);
+    transform: rotateX(66deg) rotateZ(360deg);
   }
 }
 @keyframes anim-3 {
   from {
-    transform: rotateZ(360deg) rotateX(66deg) rotateZ(0deg);
+    transform: rotateX(66deg) rotateZ(0deg);
   }
   to {
-    transform: rotateZ(360deg) rotateX(66deg) rotateZ(360deg);
+    transform: rotateX(66deg) rotateZ(360deg);
   }
 }
 .wrapper {
