@@ -22,7 +22,7 @@ export default function CardWord(props) {
     const handleClickButtonGame = () => {
         if(localStorage.getItem('printCount') != null){
             localStorage.removeItem('printCount');
-            setPrintCount('0');
+            setPrintCount(props.count(0));
         }
         // localStorage.removeItem('printCount');
     };

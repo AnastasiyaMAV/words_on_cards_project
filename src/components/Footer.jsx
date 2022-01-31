@@ -6,10 +6,12 @@ function Footer() {
 
     const handleLight = () => {
         setTheme('light');
+        console.log(theme);
     }
 
     const handleDark = () => {
         setTheme('dark');
+        console.log(theme);
     }
 
     return (

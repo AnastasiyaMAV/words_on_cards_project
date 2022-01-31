@@ -104,6 +104,15 @@ html[data-theme=light] {
   background-color: #edf0f1;
 }
 
+.game {
+  display: flex;
+  justify-content: space-around;
+}
+
+.gameCount {
+  padding-top: 3px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -149,51 +158,51 @@ html[data-theme=light] {
 
 @-webkit-keyframes anim-1 {
   from {
-    transform: rotateX(66deg) rotateZ(0deg);
+    transform: rotateZ(calc((360deg/3)*$i)) rotateX(66deg) rotateZ(0deg);
   }
   to {
-    transform: rotateX(66deg) rotateZ(360deg);
+    transform: rotateZ(calc((360deg/3)*$i)) rotateX(66deg) rotateZ(360deg);
   }
 }
 
 @keyframes anim-1 {
   from {
-    transform: rotateX(66deg) rotateZ(0deg);
+    transform: rotateZ(calc((360deg/3)*$i)) rotateX(66deg) rotateZ(0deg);
   }
   to {
-    transform: rotateX(66deg) rotateZ(360deg);
+    transform: rotateZ(calc((360deg/3)*$i)) rotateX(66deg) rotateZ(360deg);
   }
 }
 @-webkit-keyframes anim-2 {
   from {
-    transform: rotateX(66deg) rotateZ(0deg);
+    transform: rotateZ(calc((360deg/3)*$i)) rotateX(66deg) rotateZ(0deg);
   }
   to {
-    transform: rotateX(66deg) rotateZ(360deg);
+    transform: rotateZ(calc((360deg/3)*$i)) rotateX(66deg) rotateZ(360deg);
   }
 }
 @keyframes anim-2 {
   from {
-    transform: rotateX(66deg) rotateZ(0deg);
+    transform: rotateZ(calc((360deg/3)*$i)) rotateX(66deg) rotateZ(0deg);
   }
   to {
-    transform: rotateX(66deg) rotateZ(360deg);
+    transform: rotateZ(calc((360deg/3)*$i)) rotateX(66deg) rotateZ(360deg);
   }
 }
 @-webkit-keyframes anim-3 {
   from {
-    transform: rotateX(66deg) rotateZ(0deg);
+    transform: rotateZ(calc((360deg/3)*$i)) rotateX(66deg) rotateZ(0deg);
   }
   to {
-    transform: rotateX(66deg) rotateZ(360deg);
+    transform: rotateZ(calc((360deg/3)*$i)) rotateX(66deg) rotateZ(360deg);
   }
 }
 @keyframes anim-3 {
   from {
-    transform: rotateX(66deg) rotateZ(0deg);
+    transform: rotateZ(calc((360deg/3)*$i)) rotateX(66deg) rotateZ(0deg);
   }
   to {
-    transform: rotateX(66deg) rotateZ(360deg);
+    transform: rotateZ(calc((360deg/3)*$i)) rotateX(66deg) rotateZ(360deg);
   }
 }
 .wrapper {
