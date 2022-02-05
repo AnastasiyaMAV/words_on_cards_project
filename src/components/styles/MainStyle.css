@@ -84,6 +84,10 @@ html[data-theme=light] {
   transition: background-color 200ms linear;
 }
 
+.spin {
+  text-align: center;
+}
+
 .cardRussianhWordInitial {
   color: #edf0f1;
 }
@@ -243,4 +247,23 @@ html[data-theme=light] {
   50% {
     border-color: transparent;
   }
+}
+.spinLoading {
+  height: 50em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dddddd;
+}
+
+.wrapperErrorServer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.ErrorServerImg {
+  max-width: 500px;
 }/*# sourceMappingURL=MainStyle.css.map */

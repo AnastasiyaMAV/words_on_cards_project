@@ -1,6 +1,7 @@
 {
   "name": "words_on_cards_project",
   "version": "0.1.0",
+  "proxy": "http://itgirlschool.justmakeit.ru",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
@@ -14,6 +15,7 @@
     "sass": "^1.45.1",
     "web-vitals": "^1.1.2"
   },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

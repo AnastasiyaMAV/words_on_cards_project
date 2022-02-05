@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { List } from 'antd';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from './Header';
@@ -6,10 +6,12 @@ import EditableTable from './EditableTable';
 import CardWord from './CardWord';
 import Footer from './Footer';
 import NoMatchesFound from './NoMatchesFound';
+import { DataContext } from "../context/Context";
 
-const originData = require('./JSON/originData.json');
+// const originData = require('./JSON/originData.json');
 
 function ApplicationConstructor() {
+  const {dataWords} = useContext(DataContext);
   const [mass, setMass] = useState([]);
   const [count, setCount] = useState(0);
   
@@ -30,6 +32,7 @@ function ApplicationConstructor() {
 
   return (
     <div className="container">
+      
       <Router>
         <Routes>
           <Route path="/" element={<Header />}>
@@ -45,11 +48,11 @@ function ApplicationConstructor() {
                   },
                   pageSize: 1,
                 }}
-                dataSource={originData}
+                dataSource={dataWords}
                 renderItem={item => (
                   <List.Item className='listItemStyle'>
                     {                      
-                      <CardWord key={item.key} idword={item.key} english={item.english} 
+                      <CardWord key={item.id} idword={item.id} english={item.english} 
                         transcription={item.transcription} 
                         russian={item.russian} count={countWord} />
                     }
@@ -65,7 +68,6 @@ function ApplicationConstructor() {
       </Router>
           
       <Footer>Footer</Footer>
-      
     </div>
   );
 }

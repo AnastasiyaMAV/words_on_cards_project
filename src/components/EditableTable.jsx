@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd';
+import { DataContext } from "../context/Context";
 
-const originData = require('./JSON/originData.json');
+// const originData = require('./JSON/originData.json');
 
 const EditableCell = ({
   editing,
@@ -38,12 +39,17 @@ const EditableCell = ({
   );
 };
 
-function EditableTable() {
+const EditableTable = () => {
+  const {dataWords} = useContext(DataContext);
   const [form] = Form.useForm();
-  const [data, setData] = useState(originData);
+  const [data, setData] = useState(dataWords);
   const [editingKey, setEditingKey] = useState('');
 
-  const isEditing = (record) => record.key === editingKey;
+  useEffect(() => {
+    setData(dataWords);
+  });
+
+  const isEditing = (record) => record.id === editingKey;
 
   const edit = (record) => {
     form.setFieldsValue({
@@ -52,18 +58,18 @@ function EditableTable() {
       russian: '',
       ...record,
     });
-    setEditingKey(record.key);
+    setEditingKey(record.id);
   };
 
   const cancel = () => {
     setEditingKey('');
   };
 
-  const save = async (key) => {
+  const save = async (id) => {
     try {
       const row = await form.validateFields();
       const newData = [...data];
-      const index = newData.findIndex((item) => key === item.key);
+      const index = newData.findIndex((item) => id === item.id);
 
       if (index > -1) {
         const item = newData[index];
@@ -111,7 +117,7 @@ function EditableTable() {
         return editable ? (
           <span>
             <Typography.Link
-              onClick={() => save(record.key)}
+              onClick={() => save(record.id)}
               style={{
                 marginRight: 8,
               }}
@@ -147,9 +153,12 @@ function EditableTable() {
       }),
     };
   });
+
+  
+  
   return (
     <Form form={form} component={false}>
-      <Table
+        <Table
         components={{
           body: {
             cell: EditableCell,
@@ -162,7 +171,7 @@ function EditableTable() {
         pagination={{
           onChange: cancel,
         }}
-      />
+      />    
     </Form>
   );
 };
