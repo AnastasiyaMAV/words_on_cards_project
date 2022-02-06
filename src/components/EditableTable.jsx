@@ -14,7 +14,6 @@ const EditableCell = ({
   children,
   ...restProps
 }) => {
-  const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
   return (
     <td {...restProps}>
       {editing ? (
@@ -30,7 +29,7 @@ const EditableCell = ({
             },
           ]}
         >
-          {inputNode}
+        <Input />
         </Form.Item>
       ) : (
         children
