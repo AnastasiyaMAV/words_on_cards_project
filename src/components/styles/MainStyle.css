@@ -266,4 +266,10 @@ html[data-theme=light] {
 
 .ErrorServerImg {
   max-width: 500px;
+}
+
+.cardAdd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }/*# sourceMappingURL=MainStyle.css.map */

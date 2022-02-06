@@ -3,10 +3,12 @@ import { List } from 'antd';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from './Header';
 import EditableTable from './EditableTable';
+// import AddDelCellTable from './AddDelCellTable';
 import CardWord from './CardWord';
 import Footer from './Footer';
 import NoMatchesFound from './NoMatchesFound';
 import { DataContext } from "../context/Context";
+// import { DataContextAddDell } from "../context/ContextAddDel";
 
 // const originData = require('./JSON/originData.json');
 
@@ -37,7 +39,9 @@ function ApplicationConstructor() {
         <Routes>
           <Route path="/" element={<Header />}>
 
-            <Route index element={<EditableTable />} />
+            <Route index element={<EditableTable /> } />
+            
+              {/* <Route index element={<AddDelCellTable />} /> */}            
 
             <Route path="game" element={
               <List

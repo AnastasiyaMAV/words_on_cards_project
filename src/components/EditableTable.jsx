@@ -44,10 +44,11 @@ const EditableTable = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState(dataWords);
   const [editingKey, setEditingKey] = useState('');
+  const [point, setPoint] = useState(false);
 
   useEffect(() => {
-    setData(dataWords);
-  });
+    setPoint(true);
+  }, [data]);
 
   const isEditing = (record) => record.id === editingKey;
 
@@ -76,6 +77,7 @@ const EditableTable = () => {
         newData.splice(index, 1, { ...item, ...row });
         setData(newData);
         setEditingKey('');
+        return index;
       } else {
         newData.push(row);
         setData(newData);
@@ -83,6 +85,31 @@ const EditableTable = () => {
       }
     } catch (errInfo) {
       console.log('Validate Failed:', errInfo);
+    };
+  };
+
+  const updateWord = async(id) => {
+    if(point){
+      fetch(`/api/words/${id}/update`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(data),
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Something went wrong ...");
+          }
+        })
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   };
 
@@ -117,7 +144,12 @@ const EditableTable = () => {
         return editable ? (
           <span>
             <Typography.Link
-              onClick={() => save(record.id)}
+              onClick={() => {
+                save(record.id);
+
+                updateWord(record.id);
+              }}
+
               style={{
                 marginRight: 8,
               }}

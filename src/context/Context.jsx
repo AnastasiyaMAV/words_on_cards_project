@@ -28,10 +28,8 @@ const DataContextProvider = props => {
     })();
   }, []);
 
-  if (error) return <ErrorServer />;
+  if(error) return <ErrorServer />;
   if(loading || !dataWords.length) return <Spin tip="Loading..." className="spinLoading"/>
-
-
 
   return (
     <DataContext.Provider value={{ dataWords }}>
