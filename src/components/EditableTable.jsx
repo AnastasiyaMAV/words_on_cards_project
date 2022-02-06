@@ -43,11 +43,30 @@ const EditableTable = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState(dataWords);
   const [editingKey, setEditingKey] = useState('');
-  const [point, setPoint] = useState(false);
+  // const [id, setId] = useState('');
 
-  useEffect(() => {
-    setPoint(true);
-  }, [data]);
+  // useEffect(() => {
+  //   fetch(`/api/words/${id}/update`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json;charset=utf-8",
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then(response => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       } else {
+  //         throw new Error("Something went wrong ...");
+  //       }
+  //     })
+  //     .then(data => {
+  //       console.log(data);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }, [data]);
 
   const isEditing = (record) => record.id === editingKey;
 
@@ -66,10 +85,12 @@ const EditableTable = () => {
   };
 
   const save = async (id) => {
+    console.log(id);
     try {
       const row = await form.validateFields();
       const newData = [...data];
       const index = newData.findIndex((item) => id === item.id);
+      // setId(data.id);
 
       if (index > -1) {
         const item = newData[index];
@@ -87,8 +108,7 @@ const EditableTable = () => {
     };
   };
 
-  const updateWord = async(id) => {
-    if(point){
+  const updateWord = (id) => {
       fetch(`/api/words/${id}/update`, {
         method: "POST",
         headers: {
@@ -96,20 +116,16 @@ const EditableTable = () => {
         },
         body: JSON.stringify(data),
       })
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error("Something went wrong ...");
-          }
+        .then(response => { 
+          console.log(response); 
+          response.json(); 
         })
         .then(data => {
           console.log(data);
         })
         .catch(error => {
           console.log(error);
-        });
-    }
+        });    
   };
 
   const columns = [
@@ -145,7 +161,6 @@ const EditableTable = () => {
             <Typography.Link
               onClick={() => {
                 save(record.id);
-
                 updateWord(record.id);
               }}
 
