@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd';
+import { Table, Input, Popconfirm, Form, Typography } from 'antd';
 import { DataContext } from "../context/Context";
 
 // const originData = require('./JSON/originData.json');
@@ -42,31 +42,36 @@ const EditableTable = () => {
   const {dataWords} = useContext(DataContext);
   const [form] = Form.useForm();
   const [data, setData] = useState(dataWords);
-  const [editingKey, setEditingKey] = useState('');
-  // const [id, setId] = useState('');
+  const [editingKey, setEditingKey] = useState('');  
 
-  // useEffect(() => {
-  //   fetch(`/api/words/${id}/update`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json;charset=utf-8",
-  //     },
-  //     body: JSON.stringify(data),
-  //   })
-  //     .then(response => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       } else {
-  //         throw new Error("Something went wrong ...");
-  //       }
-  //     })
-  //     .then(data => {
-  //       console.log(data);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }, [data]);
+  useEffect(() => {
+    let word = '';
+    data.filter(
+      (editWord) => {
+        if(editWord.id === editingKey) {
+          word = editWord;
+        }
+        return word;
+      }
+    );
+    fetch(`/api/words/${editingKey}/update`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(word),
+    })
+      .then(response => { 
+        console.log(response); 
+        response.json(); 
+      })
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.log(error);
+      });    
+  }, [data]);
 
   const isEditing = (record) => record.id === editingKey;
 
@@ -90,7 +95,6 @@ const EditableTable = () => {
       const row = await form.validateFields();
       const newData = [...data];
       const index = newData.findIndex((item) => id === item.id);
-      // setId(data.id);
 
       if (index > -1) {
         const item = newData[index];
@@ -106,26 +110,6 @@ const EditableTable = () => {
     } catch (errInfo) {
       console.log('Validate Failed:', errInfo);
     };
-  };
-
-  const updateWord = (id) => {
-      fetch(`/api/words/${id}/update`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(data),
-      })
-        .then(response => { 
-          console.log(response); 
-          response.json(); 
-        })
-        .then(data => {
-          console.log(data);
-        })
-        .catch(error => {
-          console.log(error);
-        });    
   };
 
   const columns = [
@@ -161,7 +145,6 @@ const EditableTable = () => {
             <Typography.Link
               onClick={() => {
                 save(record.id);
-                updateWord(record.id);
               }}
 
               style={{
