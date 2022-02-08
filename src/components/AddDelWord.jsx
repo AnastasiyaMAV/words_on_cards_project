@@ -131,9 +131,8 @@ export default function AddDelWord() {
   }
 
     return(
-      
         <>
-        <div className='container'>
+        <div className='containerAddDel'>
           <Card hoverable className='cardAdd'>            
             <div>Please, enter the word you want to add to the table:</div>
 

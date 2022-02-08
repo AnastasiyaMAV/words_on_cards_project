@@ -33,7 +33,7 @@ function ApplicationConstructor() {
   }
 
   return (
-    <div className="container">
+    <div className="containerApp">
       
       <Router>
         <Routes>
