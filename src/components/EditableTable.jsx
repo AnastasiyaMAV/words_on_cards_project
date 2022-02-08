@@ -44,6 +44,10 @@ const EditableTable = () => {
   const [data, setData] = useState(dataWords);
   const [editingKey, setEditingKey] = useState('');  
 
+  // useEffect(() => {
+  //   setData(data);
+  // }, [data]);
+
   useEffect(() => {
     let word = '';
     data.filter(
@@ -71,7 +75,7 @@ const EditableTable = () => {
       .catch(error => {
         console.log(error);
       });    
-  }, [data]);
+  }, [data, editingKey]);
 
   const isEditing = (record) => record.id === editingKey;
 

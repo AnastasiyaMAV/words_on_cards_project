@@ -4,15 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { DataContextProvider } from "./context/Context";
-// import { DataContextAddDell } from "./context/ContextAddDel"
 
 
 ReactDOM.render(
   <React.StrictMode>
     <DataContextProvider>
-      {/* <DataContextAddDell> */}
         <App />
-      {/* </DataContextAddDell> */}
     </DataContextProvider>
   </React.StrictMode>,
   document.getElementById('root')

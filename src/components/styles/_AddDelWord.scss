@@ -1,0 +1,37 @@
+.cardAdd{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $colorCardRussianhWordInitial;
+}
+
+.container{
+    width: 100%;
+    // height: 80vh;
+}
+
+.addOkInvisible{
+    color: $colorCardRussianhWordInitial;
+}
+
+.addOkVisible{
+    color: $colorCardRussianhWordReverse;
+}
+
+.cardDel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $colorCardRussianhWordInitial;
+    margin-top: 25px;
+}
+
+.delOkVisible{
+    color: $colorCardRussianhWordReverse;
+}
+
+.delOkInvisible{
+    color: $colorCardRussianhWordInitial;
+}

@@ -7,6 +7,7 @@ function Header() {
                 <NavLink to="/"><img src='./assets/images/logo.png' alt="logo" className="logoImg" 
                     title="Urheberschaft: https://www.flaticon.com/ru/"/></NavLink>
                 <NavLink to="/" className="notActivLink" >Word table</NavLink>
+                <NavLink to="/addDelWord" className="notActivLink">Add or remove</NavLink>
                 <NavLink to="/game" className="notActivLink">Words on cards</NavLink>
             </ul>
             <Outlet />
