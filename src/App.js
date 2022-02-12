@@ -6,6 +6,7 @@ import ApplicationConstructor from "./components/ApplicationConstructor";
 
 function App() {  
   return <ApplicationConstructor />;
+
 }
 
 export default App;

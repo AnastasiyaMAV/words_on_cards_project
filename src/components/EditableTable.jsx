@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Table, Input, Popconfirm, Form, Typography } from 'antd';
+import { observer, inject } from "mobx-react";
 
-const originData = require('./JSON/originData.json');
+// const originData = require('./JSON/originData.json');
 
 const EditableCell = ({
   editing,
@@ -37,10 +38,16 @@ const EditableCell = ({
   );
 };
 
-function EditableTable() {
+function EditableTable({ wordsStore }) {
+  
   const [form] = Form.useForm();
-  const [data, setData] = useState(originData);
+  const [data, setData] = useState(wordsStore.massWords);
   const [editingKey, setEditingKey] = useState('');
+
+  useEffect(() => {
+    setData(wordsStore.massWords);
+    console.log(wordsStore.massWords);    
+  });
 
   const isEditing = (record) => record.key === editingKey;
 
@@ -139,7 +146,7 @@ function EditableTable() {
       ...col,
       onCell: (record) => ({
         record,
-        inputType: col.dataIndex === 'transcription' ? 'number' : 'text',
+        inputType: 'text',
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
@@ -168,4 +175,5 @@ function EditableTable() {
   );
 };
 
-export default EditableTable;
+export default inject(["wordsStore"])(observer(EditableTable));
+
