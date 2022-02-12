@@ -147,22 +147,24 @@ function EditableTable() {
     };
   });
   return (
-    <Form form={form} component={false}>
-      <Table
-        components={{
-          body: {
-            cell: EditableCell,
-          },
-        }}
-        bordered
-        dataSource={data}
-        columns={mergedColumns}
-        rowClassName="editable-row "
-        pagination={{
-          onChange: cancel,
-        }}
-      />
-    </Form>
+    <div className='containerTable'>
+      <Form form={form} component={false}>
+        <Table
+          components={{
+            body: {
+              cell: EditableCell,
+            },
+          }}
+          bordered
+          dataSource={data}
+          columns={mergedColumns}
+          rowClassName="editable-row "
+          pagination={{
+            onChange: cancel,
+          }}
+        />
+      </Form>
+    </div>
   );
 };
 

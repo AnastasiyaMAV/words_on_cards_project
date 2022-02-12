@@ -6,6 +6,7 @@ import EditableTable from './EditableTable';
 import CardWord from './CardWord';
 import Footer from './Footer';
 import NoMatchesFound from './NoMatchesFound';
+import AddDelWord from './AddDelWord';
 
 const originData = require('./JSON/originData.json');
 
@@ -29,12 +30,14 @@ function ApplicationConstructor() {
   }
 
   return (
-    <div className="container">
+    <div className="containerApp">
       <Router>
         <Routes>
           <Route path="/" element={<Header />}>
 
             <Route index element={<EditableTable />} />
+            
+            <Route path="addDelWord" element={<AddDelWord />} />      
 
             <Route path="game" element={
               <List
