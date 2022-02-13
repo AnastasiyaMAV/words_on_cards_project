@@ -25,7 +25,6 @@ function CardWord(props) {
         }
     };
     
-
     useEffect(() => {
         ref.current.focus();
     });
@@ -35,7 +34,6 @@ function CardWord(props) {
             localStorage.setItem('printCount', printCount);
         }
     },[printCount]);
-
 
     return(
         <Content className='contentCard'>

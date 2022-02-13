@@ -3,7 +3,6 @@ import "./App.css";
 import "./components/styles/MainStyle.scss";
 import ApplicationConstructor from "./components/ApplicationConstructor";
 
-
 function App() {  
   return <ApplicationConstructor />;
 

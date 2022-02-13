@@ -67,38 +67,37 @@ function AddDelWord({ wordsStore }) {
     setDelWord('');
   }
 
-    return(
-        <>
-        <div className='containerAddDel'>
-          <Card hoverable className='cardAdd'>            
-            <div>Please, enter the word you want to add to the table:</div>
+  return(
+    <>
+    <div className='containerAddDel'>
+      <Card hoverable className='cardAdd'>            
+        <div>Please, enter the word you want to add to the table:</div>
 
-            <Input placeholder="english" name="english"
-              onChange={handleChangeEnglish} value={english}/>
-            <Input placeholder="transcription" name="transcription"
-              onChange={handleChangeTranscription} value={transcription}/>
-            <Input placeholder="russian" name="russian"
-              onChange={handleChangeRussian} value={russian}/>
+        <Input placeholder="english" name="english"
+          onChange={handleChangeEnglish} value={english}/>
+        <Input placeholder="transcription" name="transcription"
+          onChange={handleChangeTranscription} value={transcription}/>
+        <Input placeholder="russian" name="russian"
+          onChange={handleChangeRussian} value={russian}/>
 
-            <div className={
-              okAdd ? 'addOkVisible' : 'addOkInvisible'
-            }
-            >Word in the table! Congratulations!</div>
+        <div className={
+          okAdd ? 'addOkVisible' : 'addOkInvisible'
+        }
+        >Word in the table! Congratulations!</div>
 
-            <Button disabled={invisibleAdd} onClick={onClAdd}>Add</Button>
-          </Card>
+        <Button disabled={invisibleAdd} onClick={onClAdd}>Add</Button>
+      </Card>
 
-          <Card hoverable className='cardDel'>            
-            <div>If you want to delete a word, then enter it below (in English format):</div>
+      <Card hoverable className='cardDel'>            
+        <div>If you want to delete a word, then enter it below (in English format):</div>
 
-            <Input placeholder="english" name="delWord"
-              onChange={handleChangeDel} value={delWord} className="delInput"/>
-              
+        <Input placeholder="english" name="delWord"
+          onChange={handleChangeDel} value={delWord} className="delInput"/>
 
-            <Button disabled={invisibleDel} onClick={onClRemove}>Del</Button>
-          </Card>
-        </div>
-        </>
-    );
+        <Button disabled={invisibleDel} onClick={onClRemove}>Del</Button>
+      </Card>
+    </div>
+    </>
+  );
 }
 export default inject(["wordsStore"])(observer(AddDelWord));

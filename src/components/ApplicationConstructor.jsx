@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import { List } from 'antd';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { List, Spin } from 'antd';
+import { observer, inject } from "mobx-react";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Header from './Header';
 import EditableTable from './EditableTable';
+import AddDelWord from './AddDelWord';
 import CardWord from './CardWord';
 import Footer from './Footer';
 import NoMatchesFound from './NoMatchesFound';
-import AddDelWord from './AddDelWord';
-import { observer, inject } from "mobx-react";
-
-// const originData = require('./JSON/originData.json');
+import ErrorServer from "./ErrorServer"
 
 function ApplicationConstructor({ wordsStore }) {
   const [mass, setMass] = useState([]);
@@ -26,10 +25,12 @@ function ApplicationConstructor({ wordsStore }) {
       setCount(0);
       setMass([]);
     }
-
     return newSet.size;
   }
 
+  if(wordsStore.error) return <ErrorServer />;
+  if(wordsStore.isLoading) return <Spin tip="Loading..." className="spinLoading"/>
+  
   return (
     <div className="containerApp">
       <Router>

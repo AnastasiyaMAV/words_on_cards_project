@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Table, Input, Popconfirm, Form, Typography } from 'antd';
 import { observer, inject } from "mobx-react";
 
-// const originData = require('./JSON/originData.json');
-
 const EditableCell = ({
   editing,
   dataIndex,
@@ -115,7 +113,7 @@ function EditableTable({ wordsStore }) {
     } catch (errInfo) {
       console.log('Validate Failed:', errInfo);
     }
-    wordsStore.loadData();// перерисовка таблицы после созранения
+    wordsStore.loadData();// перерисовка таблицы после созданения
   };
 
   const columns = [
@@ -185,6 +183,7 @@ function EditableTable({ wordsStore }) {
       }),
     };
   });
+
   return (
     <div className='containerTable'>
       <Form form={form} component={false}>
@@ -208,4 +207,3 @@ function EditableTable({ wordsStore }) {
 };
 
 export default inject(["wordsStore"])(observer(EditableTable));
-

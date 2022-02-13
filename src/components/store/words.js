@@ -107,8 +107,7 @@ export default class WordsStore {
             </div>
           ),
           onOk() {},
-        });
-        
+        });        
       }
-    }
+    } 
 }

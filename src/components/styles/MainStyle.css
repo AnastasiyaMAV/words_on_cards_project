@@ -279,4 +279,24 @@ html[data-theme=light] {
 
 .delInput {
   margin-bottom: 20px;
+}
+
+.wrapperErrorServer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.ErrorServerImg {
+  max-width: 500px;
+}
+
+.spinLoading {
+  height: 50em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dddddd;
 }/*# sourceMappingURL=MainStyle.css.map */
