@@ -3,22 +3,27 @@ import React, { useState, useEffect, useContext } from 'react';
 import { DataContext } from "../context/Context";
 
 export default function AddDelWord() {
+  const { dataWords } = useContext(DataContext);
+  const { addData } = useContext(DataContext);
+  const { removeData } = useContext(DataContext);
+
   const [english, setEnglish] = useState(null);
   const [transcription, setTranscription] = useState(null);
   const [russian, setRussian] = useState(null);
-  const [invisibleAdd, setInvisibleAdd] = useState(true);
-  const [okAdd, setOkAdd] = useState(false);
   const [data, setData] = useState({
     english: '',
     transcription: '',
     russian: '',
   });
-  const {dataWords} = useContext(DataContext);
+
+  const [invisibleAdd, setInvisibleAdd] = useState(true);
+  const [invisibleDel, setInvisibleDel] = useState(true);
+  
   const [dataTable] = useState(dataWords);
   const [delWord, setDelWord] = useState(null);
-  const [invisibleDel, setInvisibleDel] = useState(true);
+  
+  const [okAdd, setOkAdd] = useState(false);
   const [okDel, setOkDel] = useState(false);
-  const { fetchData } = useContext(DataContext);
 
   useEffect(() => {
     if(english && transcription && russian) {
@@ -50,28 +55,12 @@ export default function AddDelWord() {
   };
 
   const addWord = () => {
-    fetch(`/api/words/add`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(data),
-    })
-      .then(response => { 
-        console.log(response); 
-        response.json(); 
-      })
-      .then(data => {
-        console.log(data);
-        setOkAdd(true);
-        fetchData();
-      })
-      .catch(error => {
-        console.log(error);
-      }); 
-      setEnglish('');
-      setTranscription('');
-      setRussian('');      
+    if(!data) return;
+    addData(data);
+    setEnglish('');
+    setTranscription('');
+    setRussian('');
+    setOkAdd(true);      
   }
 
   const handleChangeDel = (e) => {
@@ -93,29 +82,8 @@ export default function AddDelWord() {
       }
     );
     if(word){
-      fetch(`/api/words/${word.id}/delete `, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(word),
-        mode: "cors",
-      })
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error("Something went wrong ...");
-          }
-        })
-        .then(data => {
-          console.log(data);
-          setOkDel(true);
-          fetchData(); //обновление таблицы
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      setOkDel(true); 
+      removeData(word);
     } else {
       Modal.info({
         title: delWord,
@@ -125,8 +93,7 @@ export default function AddDelWord() {
           </div>
         ),
         onOk() {},
-      });
-      
+      });      
     }
   }
 

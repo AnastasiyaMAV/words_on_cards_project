@@ -15,17 +15,63 @@ const DataContextProvider = props => {
       );
       const data = await fetchedData.json();
       setDataWords(data);
-      setLoading(false);
     } catch (error) {
       console.log("error", error);
-      setLoading(false);
       setError(true);
+    }
+    finally {
+      setLoading(false);
     }
   };
 
+  const addData = (data) => {
+    fetch(`/api/words/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => { 
+        console.log(response); 
+        response.json(); 
+      })
+      .then(data => {
+        console.log(data);
+        fetchData();
+      })
+      .catch(error => {
+        console.log(error);
+      }); 
+  }
+
+  const removeData = (word) => {
+
+      fetch(`/api/words/${word.id}/delete `, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(word),
+        mode: "cors",
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Something went wrong ...");
+          }
+        })
+        .then(data => {
+          console.log(data);
+          fetchData();
+        })
+        .catch(error => {
+          console.log(error);
+        });
+  }
+
   useEffect(() => {
-    setLoading(true);
-    setError(false);
     fetchData();
   }, []);
   
@@ -33,7 +79,7 @@ const DataContextProvider = props => {
   if(loading || !dataWords.length) return <Spin tip="Loading..." className="spinLoading"/>
 
   return (
-    <DataContext.Provider value={{ dataWords, fetchData }}>
+    <DataContext.Provider value={{ dataWords, fetchData, addData, removeData }}>
       {props.children}
     </DataContext.Provider>
   );
