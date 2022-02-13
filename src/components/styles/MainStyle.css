@@ -277,10 +277,6 @@ html[data-theme=light] {
   margin-top: 25px;
 }
 
-.delOkVisible {
-  color: #000000;
-}
-
-.delOkInvisible {
-  color: #edf0f1;
+.delInput {
+  margin-bottom: 20px;
 }/*# sourceMappingURL=MainStyle.css.map */

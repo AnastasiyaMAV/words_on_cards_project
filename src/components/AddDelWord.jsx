@@ -92,7 +92,8 @@ function AddDelWord({ wordsStore }) {
             <div>If you want to delete a word, then enter it below (in English format):</div>
 
             <Input placeholder="english" name="delWord"
-              onChange={handleChangeDel} value={delWord}/>
+              onChange={handleChangeDel} value={delWord} className="delInput"/>
+              
 
             <Button disabled={invisibleDel} onClick={onClRemove}>Del</Button>
           </Card>

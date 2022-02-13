@@ -30,9 +30,7 @@ export default class WordsStore {
         .catch(() => {
           this.error = true;
           this.isLoading = false;
-        });
-
-        
+        });   
     }
 
     addWord = (dataAdd) => {
