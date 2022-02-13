@@ -7,12 +7,13 @@ export default class WordsStore {
   
     constructor() {
       makeAutoObservable(this);
-      this.loadData()
+      this.loadData();
     }
     
     loadData =  () => {
       this.isLoading = true;
       this.error = false; 
+      
       fetch("/api/words")
         .then(response => {
           if (response.ok) {
@@ -29,5 +30,9 @@ export default class WordsStore {
           this.error = true;
           this.isLoading = false;
         });
-      };
+
+        
+    }    
+    
+    
 }

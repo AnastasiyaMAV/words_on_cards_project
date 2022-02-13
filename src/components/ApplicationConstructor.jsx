@@ -7,10 +7,11 @@ import CardWord from './CardWord';
 import Footer from './Footer';
 import NoMatchesFound from './NoMatchesFound';
 import AddDelWord from './AddDelWord';
+import { observer, inject } from "mobx-react";
 
-const originData = require('./JSON/originData.json');
+// const originData = require('./JSON/originData.json');
 
-function ApplicationConstructor() {
+function ApplicationConstructor({ wordsStore }) {
   const [mass, setMass] = useState([]);
   const [count, setCount] = useState(0);
   
@@ -48,11 +49,11 @@ function ApplicationConstructor() {
                   },
                   pageSize: 1,
                 }}
-                dataSource={originData}
+                dataSource={wordsStore.massWords}
                 renderItem={item => (
                   <List.Item className='listItemStyle'>
                     {                      
-                      <CardWord key={item.key} idword={item.key} english={item.english} 
+                      <CardWord key={item.id} idword={item.id} english={item.english} 
                         transcription={item.transcription} 
                         russian={item.russian} count={countWord} />
                     }
@@ -73,4 +74,4 @@ function ApplicationConstructor() {
   );
 }
 
-export default ApplicationConstructor;
+export default inject(["wordsStore"])(observer(ApplicationConstructor));

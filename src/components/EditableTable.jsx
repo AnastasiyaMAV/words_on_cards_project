@@ -46,10 +46,40 @@ function EditableTable({ wordsStore }) {
 
   useEffect(() => {
     setData(wordsStore.massWords);
-    console.log(wordsStore.massWords);    
+    // console.log(wordsStore.massWords);    
   });
 
-  const isEditing = (record) => record.key === editingKey;
+  useEffect(() => {
+    let word = '';
+    data.filter(
+      (editWord) => {
+        if(editWord.id === editingKey) {
+          word = editWord;
+        }
+        return word;
+      }
+    );
+    fetch(`/api/words/${editingKey}/update`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(word),
+    })
+      .then(response => { 
+        console.log(response); 
+        response.json(); 
+        
+      })
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.log(error);
+      });    
+  }, [data, editingKey]);
+
+  const isEditing = (record) => record.id === editingKey;
 
   const edit = (record) => {
     form.setFieldsValue({
@@ -58,18 +88,19 @@ function EditableTable({ wordsStore }) {
       russian: '',
       ...record,
     });
-    setEditingKey(record.key);
+    setEditingKey(record.id);
+    
   };
 
   const cancel = () => {
     setEditingKey('');
   };
 
-  const save = async (key) => {
+  const save = async (id) => {
     try {
       const row = await form.validateFields();
       const newData = [...data];
-      const index = newData.findIndex((item) => key === item.key);
+      const index = newData.findIndex((item) => id === item.id);
 
       if (index > -1) {
         const item = newData[index];
@@ -84,6 +115,7 @@ function EditableTable({ wordsStore }) {
     } catch (errInfo) {
       console.log('Validate Failed:', errInfo);
     }
+    wordsStore.loadData();// перерисовка таблицы после созранения
   };
 
   const columns = [
@@ -117,7 +149,7 @@ function EditableTable({ wordsStore }) {
         return editable ? (
           <span>
             <Typography.Link
-              onClick={() => save(record.key)}
+              onClick={() => save(record.id)}
               style={{
                 marginRight: 8,
               }}
