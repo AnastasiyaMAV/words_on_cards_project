@@ -1,37 +1,70 @@
-import { Card, Input, Button, Modal } from 'antd';
-import React, { useState, useEffect, useContext } from 'react';
+import { Card, Input, Button } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { observer, inject } from "mobx-react";
 
-export default function AddDelWord() {
+function AddDelWord({ wordsStore }) {
   const [english, setEnglish] = useState('');
   const [transcription, setTranscription] = useState('');
   const [russian, setRussian] = useState('');
   const [delWord, setDelWord] = useState('');
+
+  const [data, setData] = useState({
+    english: '',
+    transcription: '',
+    russian: '',
+  });
+
+  const [invisibleAdd, setInvisibleAdd] = useState(true);
+  const [invisibleDel, setInvisibleDel] = useState(true);
+  const [okAdd, setOkAdd] = useState(false);
+
   useEffect(() => {
- 
-  }, []);
+    if(english && transcription && russian) {
+      setInvisibleAdd(false);
+    } else {
+      setInvisibleAdd(true);
+    }
+    if(!delWord) {
+      setInvisibleDel(true);
+    }
+  }, [english, transcription, russian, delWord]);
 
   const handleChangeEnglish = (e) => {
-
+    setEnglish(e.target.value);
+    setData({...data, [e.target.name]: e.target.value});
+    setOkAdd(false);
   };
 
   const handleChangeTranscription = (e) => {
-
+    setTranscription(e.target.value);
+    setData({...data, [e.target.name]: e.target.value});
+    setOkAdd(false);
   };
 
   const handleChangeRussian = (e) => {
-
+    setRussian(e.target.value);
+    setData({...data, [e.target.name]: e.target.value});
+    setOkAdd(false);
   };
 
-  const addWord = () => {
-
+  const onClAdd = () => {
+    if (!data) return;
+    wordsStore.addWord(data);
+    setEnglish('');
+    setTranscription('');
+    setRussian('');  
+    setOkAdd(true);
   }
 
   const handleChangeDel = (e) => {
-
+    setDelWord(e.target.value);
+    setInvisibleDel(false);
   };
 
-  const removeWord = () => {
-
+  const onClRemove = () => {
+    if (!delWord) return;
+    wordsStore.removeWord(delWord);    
+    setDelWord('');
   }
 
     return(
@@ -47,12 +80,12 @@ export default function AddDelWord() {
             <Input placeholder="russian" name="russian"
               onChange={handleChangeRussian} value={russian}/>
 
-            {/* <div className={
+            <div className={
               okAdd ? 'addOkVisible' : 'addOkInvisible'
             }
-            >Word in the table! Congratulations!</div> */}
+            >Word in the table! Congratulations!</div>
 
-            <Button  onClick={addWord}>Add</Button>
+            <Button disabled={invisibleAdd} onClick={onClAdd}>Add</Button>
           </Card>
 
           <Card hoverable className='cardDel'>            
@@ -60,15 +93,11 @@ export default function AddDelWord() {
 
             <Input placeholder="english" name="delWord"
               onChange={handleChangeDel} value={delWord}/>
-{/* 
-            <div className={
-              okDel ? 'delOkVisible' : 'delOkInvisible'
-            }
-            >The word has been removed from the table! Congratulations!</div> */}
 
-            <Button onClick={removeWord}>Del</Button>
+            <Button disabled={invisibleDel} onClick={onClRemove}>Del</Button>
           </Card>
         </div>
         </>
     );
 }
+export default inject(["wordsStore"])(observer(AddDelWord));
