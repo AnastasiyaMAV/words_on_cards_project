@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/words_on_cards_project/static/css/main.8efbb8bb.chunk.css",
+    "main.js": "/words_on_cards_project/static/js/main.97768d0f.chunk.js",
+    "main.js.map": "/words_on_cards_project/static/js/main.97768d0f.chunk.js.map",
+    "runtime-main.js": "/words_on_cards_project/static/js/runtime-main.4439bdf8.js",
+    "runtime-main.js.map": "/words_on_cards_project/static/js/runtime-main.4439bdf8.js.map",
+    "static/css/2.0ce74623.chunk.css": "/words_on_cards_project/static/css/2.0ce74623.chunk.css",
+    "static/js/2.1651c491.chunk.js": "/words_on_cards_project/static/js/2.1651c491.chunk.js",
+    "static/js/2.1651c491.chunk.js.map": "/words_on_cards_project/static/js/2.1651c491.chunk.js.map",
+    "static/js/3.0a6ceaca.chunk.js": "/words_on_cards_project/static/js/3.0a6ceaca.chunk.js",
+    "static/js/3.0a6ceaca.chunk.js.map": "/words_on_cards_project/static/js/3.0a6ceaca.chunk.js.map",
+    "index.html": "/words_on_cards_project/index.html",
+    "static/css/2.0ce74623.chunk.css.map": "/words_on_cards_project/static/css/2.0ce74623.chunk.css.map",
+    "static/css/main.8efbb8bb.chunk.css.map": "/words_on_cards_project/static/css/main.8efbb8bb.chunk.css.map",
+    "static/js/2.1651c491.chunk.js.LICENSE.txt": "/words_on_cards_project/static/js/2.1651c491.chunk.js.LICENSE.txt",
+    "static/media/MainStyle.scss": "/words_on_cards_project/static/media/Rubik-Light.c8b35981.eot"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4439bdf8.js",
+    "static/css/2.0ce74623.chunk.css",
+    "static/js/2.1651c491.chunk.js",
+    "static/css/main.8efbb8bb.chunk.css",
+    "static/js/main.97768d0f.chunk.js"
+  ]
+}
