@@ -8,30 +8,46 @@ export default class WordsStore {
   
     constructor() {
       makeAutoObservable(this);
-      this.loadData();
     }
-    
-    loadData =  () => {
+
+    loadData = async () => {
+      if(this.isLoading) {
+        return;
+      }
       this.isLoading = true;
-      this.error = false; 
-      
-      fetch("/api/words")
+  
+      const data = await fetch("/api/words")
         .then(response => {
           if (response.ok) {
             return response.json();
           } else {
             throw new Error("Something went wrong ...");
           }
-        })
+        });
+  
+      runInAction(() => {
+        this.massWords = data;
+        this.isLoading = false;
+      });
+    };
+
+    update = async (editingKey, word) => { 
+      const data = await fetch(`/api/words/${editingKey}/update`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(word),
+      })
         .then(response => {
-          this.massWords = response;
-          this.isLoading = false;
-        })
-        .catch(() => {
-          this.error = true;
-          this.isLoading = false;
-        });   
-    }
+          if (response.ok) {
+            this.loadData();
+          } else {
+            throw new Error("Something went wrong ...");
+          }
+        });
+
+    };
 
     addWord = (dataAdd) => {
       fetch(`/api/words/add`, {
@@ -41,10 +57,6 @@ export default class WordsStore {
         },
         body: JSON.stringify(dataAdd),
       })
-        .then(response => { 
-          console.log(response); 
-          response.json(); 
-        })
         .then(data => {
           console.log(data);
           this.loadData();

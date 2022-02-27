@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Input, Popconfirm, Form, Typography } from 'antd';
+import { Table, Input, Popconfirm, Form, Typography, Spin } from 'antd';
 import { observer, inject } from "mobx-react";
+import ErrorServer from "./ErrorServer"
 
 const EditableCell = ({
   editing,
@@ -43,9 +44,10 @@ function EditableTable({ wordsStore }) {
   const [editingKey, setEditingKey] = useState('');
 
   useEffect(() => {
-    setData(wordsStore.massWords);
-    // console.log(wordsStore.massWords);    
-  });
+    if(wordsStore.massWords.length){
+      setData(wordsStore.massWords);  
+    }
+  }, [wordsStore.massWords]);
 
   useEffect(() => {
     let word = '';
@@ -57,25 +59,11 @@ function EditableTable({ wordsStore }) {
         return word;
       }
     );
-    fetch(`/api/words/${editingKey}/update`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(word),
-    })
-      .then(response => { 
-        console.log(response); 
-        response.json(); 
-        
-      })
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => {
-        console.log(error);
-      });    
-  }, [data, editingKey]);
+
+    if(editingKey){
+      wordsStore.update(editingKey, word);
+    };
+  }, [data]);
 
   const isEditing = (record) => record.id === editingKey;
 
@@ -183,6 +171,9 @@ function EditableTable({ wordsStore }) {
       }),
     };
   });
+
+  if(wordsStore.error) return <ErrorServer />;
+  if(wordsStore.isLoading) return <Spin tip="Loading..." className="spinLoading"/>
 
   return (
     <div className='containerTable'>
