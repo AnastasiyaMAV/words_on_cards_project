@@ -1,17 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { List } from 'antd';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { observer, inject } from "mobx-react";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Header from './Header';
 import EditableTable from './EditableTable';
+import AddDelWord from './AddDelWord';
 import CardWord from './CardWord';
 import Footer from './Footer';
 import NoMatchesFound from './NoMatchesFound';
 
-const originData = require('./JSON/originData.json');
-
-function ApplicationConstructor() {
+function ApplicationConstructor({ wordsStore }) {
   const [mass, setMass] = useState([]);
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    wordsStore.loadData();
+  }, []);
   
   const countWord = (id) => {
     const newSet = new Set(mass);
@@ -24,17 +28,18 @@ function ApplicationConstructor() {
       setCount(0);
       setMass([]);
     }
-
     return newSet.size;
   }
-
+  
   return (
-    <div className="container">
+    <div className="containerApp">
       <Router>
         <Routes>
           <Route path="/" element={<Header />}>
 
             <Route index element={<EditableTable />} />
+            
+            <Route path="addDelWord" element={<AddDelWord />} />      
 
             <Route path="game" element={
               <List
@@ -45,11 +50,11 @@ function ApplicationConstructor() {
                   },
                   pageSize: 1,
                 }}
-                dataSource={originData}
+                dataSource={wordsStore.massWords}
                 renderItem={item => (
                   <List.Item className='listItemStyle'>
                     {                      
-                      <CardWord key={item.key} idword={item.key} english={item.english} 
+                      <CardWord key={item.id} idword={item.id} english={item.english} 
                         transcription={item.transcription} 
                         russian={item.russian} count={countWord} />
                     }
@@ -70,4 +75,4 @@ function ApplicationConstructor() {
   );
 }
 
-export default ApplicationConstructor;
+export default inject(["wordsStore"])(observer(ApplicationConstructor));

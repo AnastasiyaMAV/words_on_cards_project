@@ -8,6 +8,6 @@ function NoMatchesFound() {
       </div>
       </>
     );
-  }
+}
   
-  export default NoMatchesFound;
+export default NoMatchesFound;

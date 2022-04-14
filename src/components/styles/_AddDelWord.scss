@@ -1,0 +1,32 @@
+.containerAddDel{
+    min-height: calc(100vh - 70px);
+}
+
+.cardAdd{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $colorCardRussianhWordInitial;
+}
+
+.addOkInvisible{
+    color: $colorCardRussianhWordInitial;
+}
+
+.addOkVisible{
+    color: $colorCardRussianhWordReverse;
+}
+
+.cardDel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $colorCardRussianhWordInitial;
+    margin-top: 25px;
+}
+
+.delInput {
+    margin-bottom: 20px;
+}

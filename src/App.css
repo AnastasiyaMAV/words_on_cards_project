@@ -4,7 +4,7 @@
   font-size: 12px;
 }
 
-.container {
+.containerApp {
   font-family:'Rubik-Light', 'Arial Narrow', Arial, sans-serif;
   margin: 0 auto;
   background-color: var(--color-background);
@@ -16,3 +16,6 @@
   justify-content: center;
 }
 
+html, body {
+  height: 100%;
+}

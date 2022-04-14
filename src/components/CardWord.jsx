@@ -3,8 +3,7 @@ import { Content } from 'antd/lib/layout/layout';
 import React, { useState, useEffect, useRef } from 'react';
 import throttle from 'lodash/throttle';
 
-export default function CardWord(props) {
-
+function CardWord(props) {
     const [pressed, setPressed] = useState(false);
     const [printCount, setPrintCount] = useState(0);
     const ref = useRef(null);
@@ -24,10 +23,8 @@ export default function CardWord(props) {
             localStorage.removeItem('printCount');
             setPrintCount(props.count(0));
         }
-        // localStorage.removeItem('printCount');
     };
     
-
     useEffect(() => {
         ref.current.focus();
     });
@@ -37,7 +34,6 @@ export default function CardWord(props) {
             localStorage.setItem('printCount', printCount);
         }
     },[printCount]);
-
 
     return(
         <Content className='contentCard'>
@@ -79,3 +75,4 @@ export default function CardWord(props) {
         </Content>
     );
 }
+export default CardWord;

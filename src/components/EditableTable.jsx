@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd';
-
-const originData = require('./JSON/originData.json');
+import React, { useState, useEffect } from 'react';
+import { Table, Input, Popconfirm, Form, Typography, Spin } from 'antd';
+import { observer, inject } from "mobx-react";
+import ErrorServer from "./ErrorServer"
 
 const EditableCell = ({
   editing,
@@ -37,12 +37,35 @@ const EditableCell = ({
   );
 };
 
-function EditableTable() {
+function EditableTable({ wordsStore }) {
+  
   const [form] = Form.useForm();
-  const [data, setData] = useState(originData);
+  const [data, setData] = useState(wordsStore.massWords);
   const [editingKey, setEditingKey] = useState('');
 
-  const isEditing = (record) => record.key === editingKey;
+  useEffect(() => {
+    if(wordsStore.massWords.length){
+      setData(wordsStore.massWords);  
+    }
+  }, [wordsStore.massWords]);
+
+  useEffect(() => {
+    let word = '';
+    data.filter(
+      (editWord) => {
+        if(editWord.id === editingKey) {
+          word = editWord;
+        }
+        return word;
+      }
+    );
+
+    if(editingKey){
+      wordsStore.update(editingKey, word);
+    };
+  }, [data]);
+
+  const isEditing = (record) => record.id === editingKey;
 
   const edit = (record) => {
     form.setFieldsValue({
@@ -51,18 +74,19 @@ function EditableTable() {
       russian: '',
       ...record,
     });
-    setEditingKey(record.key);
+    setEditingKey(record.id);
+    
   };
 
   const cancel = () => {
     setEditingKey('');
   };
 
-  const save = async (key) => {
+  const save = async (id) => {
     try {
       const row = await form.validateFields();
       const newData = [...data];
-      const index = newData.findIndex((item) => key === item.key);
+      const index = newData.findIndex((item) => id === item.id);
 
       if (index > -1) {
         const item = newData[index];
@@ -77,6 +101,7 @@ function EditableTable() {
     } catch (errInfo) {
       console.log('Validate Failed:', errInfo);
     }
+    wordsStore.loadData();// перерисовка таблицы после созданения
   };
 
   const columns = [
@@ -110,7 +135,7 @@ function EditableTable() {
         return editable ? (
           <span>
             <Typography.Link
-              onClick={() => save(record.key)}
+              onClick={() => save(record.id)}
               style={{
                 marginRight: 8,
               }}
@@ -139,31 +164,37 @@ function EditableTable() {
       ...col,
       onCell: (record) => ({
         record,
-        inputType: col.dataIndex === 'transcription' ? 'number' : 'text',
+        inputType: 'text',
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
       }),
     };
   });
+
+  if(wordsStore.error) return <ErrorServer />;
+  if(wordsStore.isLoading) return <Spin tip="Loading..." className="spinLoading"/>
+
   return (
-    <Form form={form} component={false}>
-      <Table
-        components={{
-          body: {
-            cell: EditableCell,
-          },
-        }}
-        bordered
-        dataSource={data}
-        columns={mergedColumns}
-        rowClassName="editable-row "
-        pagination={{
-          onChange: cancel,
-        }}
-      />
-    </Form>
+    <div className='containerTable'>
+      <Form form={form} component={false}>
+        <Table
+          components={{
+            body: {
+              cell: EditableCell,
+            },
+          }}
+          bordered
+          dataSource={data}
+          columns={mergedColumns}
+          rowClassName="editable-row "
+          pagination={{
+            onChange: cancel,
+          }}
+        />
+      </Form>
+    </div>
   );
 };
 
-export default EditableTable;
+export default inject(["wordsStore"])(observer(EditableTable));
