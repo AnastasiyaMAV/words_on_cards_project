@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/words_on_cards_project/static/css/main.a0e9064a.chunk.css",
-    "main.js": "/words_on_cards_project/static/js/main.7c10559f.chunk.js",
-    "main.js.map": "/words_on_cards_project/static/js/main.7c10559f.chunk.js.map",
+    "main.js": "/words_on_cards_project/static/js/main.ee74abeb.chunk.js",
+    "main.js.map": "/words_on_cards_project/static/js/main.ee74abeb.chunk.js.map",
     "runtime-main.js": "/words_on_cards_project/static/js/runtime-main.273ffaf4.js",
     "runtime-main.js.map": "/words_on_cards_project/static/js/runtime-main.273ffaf4.js.map",
     "static/css/2.0ce74623.chunk.css": "/words_on_cards_project/static/css/2.0ce74623.chunk.css",
@@ -14,13 +14,15 @@
     "static/css/2.0ce74623.chunk.css.map": "/words_on_cards_project/static/css/2.0ce74623.chunk.css.map",
     "static/css/main.a0e9064a.chunk.css.map": "/words_on_cards_project/static/css/main.a0e9064a.chunk.css.map",
     "static/js/2.3d100993.chunk.js.LICENSE.txt": "/words_on_cards_project/static/js/2.3d100993.chunk.js.LICENSE.txt",
-    "static/media/MainStyle.scss": "/words_on_cards_project/static/media/Rubik-Light.c8b35981.eot"
+    "static/media/MainStyle.scss": "/words_on_cards_project/static/media/Rubik-Light.c8b35981.eot",
+    "static/media/copyright.f82ffc86.png": "/words_on_cards_project/static/media/copyright.f82ffc86.png",
+    "static/media/logo.0ff6c1e5.png": "/words_on_cards_project/static/media/logo.0ff6c1e5.png"
   },
   "entrypoints": [
     "static/js/runtime-main.273ffaf4.js",
     "static/css/2.0ce74623.chunk.css",
     "static/js/2.3d100993.chunk.js",
     "static/css/main.a0e9064a.chunk.css",
-    "static/js/main.7c10559f.chunk.js"
+    "static/js/main.ee74abeb.chunk.js"
   ]
 }
