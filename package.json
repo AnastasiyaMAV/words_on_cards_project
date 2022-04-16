@@ -1,7 +1,6 @@
 {
   "name": "words_on_cards_project",
   "version": "0.1.0",
-  "proxy": "http://itgirlschool.justmakeit.ru",
   "private": true,
   "homepage": "https://anastasiyamav.github.io/words_on_cards_project/",
   "dependencies": {
