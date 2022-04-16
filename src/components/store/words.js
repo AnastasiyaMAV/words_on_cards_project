@@ -32,7 +32,7 @@ export default class WordsStore {
     };
 
     update = async (editingKey, word) => { 
-      const data = await fetch(`/api/words/${editingKey}/update`, {
+      await fetch(`/api/words/${editingKey}/update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",

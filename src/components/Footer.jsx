@@ -1,5 +1,6 @@
 import { Button } from "antd";
 import { useTheme } from "./hooks/useTheme";
+import Copyright from "../components/assets/images/copyright.png";
 
 function Footer() {
     const { theme, setTheme } = useTheme();
@@ -22,7 +23,7 @@ function Footer() {
             </div>
 
             <div className="inscription">
-                <img src='./assets/images/copyright.png' alt="copyright" className="copyrightImg" 
+                <img src={Copyright} alt="copyright" className="copyrightImg" 
                     title="Urheberschaft: https://www.flaticon.com/ru/" />
                 <span>Anastasiya Vostrikova</span>
             </div>

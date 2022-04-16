@@ -38,6 +38,8 @@ function ApplicationConstructor({ wordsStore }) {
           <Route path="/" element={<Header />}>
 
             <Route index element={<EditableTable />} />
+
+            <Route path="words_on_cards_project" element={<EditableTable />} />  
             
             <Route path="addDelWord" element={<AddDelWord />} />      
 
