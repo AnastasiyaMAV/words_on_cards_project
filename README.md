@@ -21,7 +21,7 @@
 
 ---
 
-//гиф
+![gif](https://github.com/AnastasiyaMAV/words_on_cards_project/blob/main/src/components/assets/images/Words_on_Cards.gif)
 
 #### Используемые технологии:
 
