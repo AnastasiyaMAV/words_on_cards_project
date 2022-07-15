@@ -5,17 +5,18 @@
 }
 
 .containerApp {
-  font-family:'Rubik-Light', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Rubik-Light", "Arial Narrow", Arial, sans-serif;
   margin: 0 auto;
   background-color: var(--color-background);
-  transition:  background-color 200ms linear;
+  transition: background-color 200ms linear;
 }
 
 .listItemStyle {
-  display: flex; 
+  display: flex;
   justify-content: center;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
